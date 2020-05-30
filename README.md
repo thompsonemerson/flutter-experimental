@@ -19,3 +19,68 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+<br>
+
+## Web API [required]
+Spring Boot Web API for consumption of the ByteBank Flutter App
+
+### Features
+- `GET` show transactions
+- `POST` create transaction
+
+### How to run
+```bash
+$ java -jar server.jar
+```
+> the api was built based on Java 8, to work as expected, version 8 is recommended
+
+### End-points
+- GET: `/transactions`
+```json
+// demo response
+[
+    {
+        "id": "b9663ef3-3749-400e-be8f-1280db94aac8",
+        "value": 200.00,
+        "contact": {
+            "name": "Fulano",
+            "accountNumber": 1000
+        },
+        "dateTime": "2020-05-30 15:32:13"
+    },
+    {
+        "id": "d1bf689c-caa2-4e45-b1fc-5a90b10d6d48",
+        "value": 200.00,
+        "contact": {
+            "name": "Beltrano",
+            "accountNumber": 1500
+        },
+        "dateTime": "2020-05-30 15:36:23"
+    }
+]
+```
+
+- POST: `/transactions`
+> It's necessary to send `password` = `1000` in the request header
+```json
+// demo request body
+{
+  	"value": 200.0,
+  	"contact": {
+  		"name": "Thompson",
+  		"accountNumber": 1000
+  	}
+}
+
+// demo response
+{
+      "id": "b9663ef3-3749-400e-be8f-1280db94aac8",
+      "value": 200.00,
+      "contact": {
+          "name": "Thompson",
+          "accountNumber": 1000
+      },
+      "dateTime": "2020-05-30 11:07:26"
+}
+```
